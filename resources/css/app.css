@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
+@media only screen and (max-width: 420px) {
+    .main {
+        /* height: fit-content; */
+        display: flex;
+        flex-direction: column;
+
+
+    }
+    .dashboard-section2{
+        background-color: orange  !important;
+        width: 90vw;
+        /* height: 1000vh; */
+        margin-top: 5vh;
+
+    }
+    .section-img{
+        /* background-color: red !important; */
+        height: 50vh !important;
+        width: 90vw !important;
+    }
+    .section-productive{
+        width: 90vw !important;
+    }
+    .body {
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        height: 40vh;
+
+    }
+
+    .side-bar {
+        background-color: blue;
+        width: 5000vw !important;
+    }
+
+    .deux-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .side-bar {
+        display: none;
+    }
+
+    .first-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .first-page-section {
+        height: fit-content;
+        border-top-right-radius: 100px 100px;
+        border-top-left-radius: 100px 100px;
+    }
+
+    .first-page-section-h1 {
+        width: fit-content;
+        font-size: 50px;
+    }
+
+    .first-page-section p {
+        /* background-color: red; */
+        width: 100% !important;
+    }
+
+    .tasks {
+        display: flex;
+        flex-direction: column !important;
+        width: 100vw;
+        ;
+    }
+
+    .mini-task {
+        margin-top: 2vh !important;
+        width: 80vw !important
+    }
+
+    .button-create {
+        width: fit-content !important;
+    }
+}
+
+/* calendar */
+h1 {
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-weight: 600;
+}
+
+.calendar {
+    margin: auto;
+    width: 90%;
+    /* max-width: 380px; */
+    padding: 1rem;
+    /* background: #d3e7ff; */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.calendar header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.calendar nav {
+    display: flex;
+    align-items: center;
+
+}
+
+.calendar ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.calendar ul li {
+    width: calc(100% / 7);
+    margin-top: 5%;
+    position: relative;
+    z-index: 2;
+}
+
+#prev,
+#next {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+#prev::before,
+#next::before {
+    content: "";
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-style: solid;
+    border-width: 0.25em 0.25em 0 0;
+    border-color: #ccc;
+}
+
+#next::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#prev::before {
+    transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+#prev:hover::before,
+#next:hover::before {
+    border-color: #000;
+}
+
+.days {
+    font-weight: 600;
+}
+
+.dates li.today {
+    color: #fff;
+}
+
+.dates li.today::before {
+    content: "";
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.dates li.inactive {
+    color: #ccc;
+}
+
+/* loading page */
+.container {
+    background-color: black;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.loading-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #6c5ce7;
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    color: #191654;
+}
+
+#svg {
+    height: 150px;
+    width: 200px;
+    stroke: white;
+    fill-opacity: 0;
+    stroke-width: 5px;
+    stroke-dasharray: 4500;
+    animation: draw 10s ease;
+}
+
+@keyframes draw {
+    0% {
+        stroke-dashoffset: 4500;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+.name-container {
+    height: 30px;
+    overflow: hidden;
+}
+
+.logo-name {
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 12px;
+    text-transform: uppercase;
+    margin-left: 20px;
+    font-weight: bolder;
+}
+
+/* sign up */
+.form-register{
+    border: none !important;;
+    border-top-right-radius: 100px 100px !important;
+}
