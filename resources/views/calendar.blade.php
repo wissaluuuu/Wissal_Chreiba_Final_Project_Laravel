@@ -110,7 +110,7 @@
 
 
                     if (end.getDate() - start.getDate() > 0 && !info.allDay) {
-                        alert("rak khditi bzaf dyal l wa9t")
+                        alert("'-'")
                         calendar.unselect()
                         return
                     }

@@ -55,6 +55,7 @@
     .first-page {
         display: flex;
         flex-direction: column;
+        /* background-color: red !important; */
     }
 
     .first-page-section {
@@ -264,5 +265,11 @@ h3 {
 /* sign up */
 .form-register{
     border: none !important;;
+    border-top-right-radius: 100px 100px !important;
+}
+
+/* register */
+.register-section{
+    border: none;
     border-top-right-radius: 100px 100px !important;
 }

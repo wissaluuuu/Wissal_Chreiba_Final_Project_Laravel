@@ -24,9 +24,17 @@ Route::middleware('auth')->group(function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/espace' , [ProjectController::class ,'store'])->name('espace.store');
+// creer la tache
 Route::post('/tache' , [TacheController::class ,'store'])->name('tache.store');
-Route::get('/espaceTravail' , [ProjectController::class ,'index'])->name('espace.index');
+
+
+Route::get('/espaceTravail' , [ProjectController::class ,'show'])->name('espace.index');
+
+
 Route::post("/calendar/store" , [CalendarController::class , "store"]);
 Route::get("/calendar/show" , [CalendarController::class , "show"]);
 require __DIR__.'/auth.php';
-Route::get("/Projects",[ProjectController::class , "show"])->name('espace.show');
+Route::get("/Projects",[ProjectController::class , "index"])->name('projects.index');
+Route::get('/taches', [TacheController::class, 'index'])->name('taches.index');
+
+Route::put('/taches/{id}', [TacheController::class, 'update'])->name('tache.update');

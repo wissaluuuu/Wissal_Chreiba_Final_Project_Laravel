@@ -13,17 +13,14 @@ return new class extends Migration
     {
         Schema::create('taches', function (Blueprint $table) {
             $table->id();
+            // $table->foreignId('user_id')->constrained(); 
             $table->string('name');
-            $table->text('description')->nullable();
-            // $table->foreignId('espace_id')->constrained('espaces')->onDelete('cascade');
-            // $table->foreignId('assigned_to')->constrained('users');
-            $table->foreignId('created_by')->constrained('users');
-            // $table->foreignId('updated_by')->constrained('users');
-            // $table->string('status')->nullable(); 
-            // $table->string('priority')->nullable();
-            // $table->dateTime('deadline')->nullable(); 
-            // $table->string('due_date')->nullable(); 
-            // $table->string('image_path')->nullable(); 
+            $table->string('description');
+            // $table->enum("status", ['to do', 'in progress', 'done'])->default('to do');
+            $table->enum("priority", ['low', 'medium', 'high'])->nullable();
+            $table->dateTime("dateEnd");
+            $table->dateTime("dateStart");
+            $table->unsignedBigInteger('project_id')->nullable();
             $table->timestamps();
         });
     }

@@ -10,34 +10,24 @@ class Tache extends Model
     use HasFactory;
 
     protected $fillable = [
+        // 'user_id',
         'name',
         'description',
-        // 'espace_id', 
-        // 'assigned_to',
-        'created_by',
-        // 'updated_by',
-        // 'status',
-        // 'priority',
-        // 'deadline',
-        // 'due_date',
-        // 'image_path',
+        // "status",
+        'priority' ,
+        "dateStart",
+        "dateEnd",
+        'project_id'
+        
     ];
-
-    public function espace()
+    public function project()
     {
         return $this->belongsTo(Project::class);
     }
-    public function assignedUser()
+
+
+    public function User()
     {
         return $this->belongsTo(User::class, 'assigned_user_id');
-    }
-
-    public function createdBy()
-    {
-        return $this->belongsTo(User::class, 'created_by');
-    }
-    public function updatedBy()
-    {
-        return $this->belongsTo(User::class, 'updated_by');
     }
 }

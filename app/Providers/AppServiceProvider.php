@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Models\Tache;
 use Illuminate\Console\View\Components\Task;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project as XmlProject;
 
@@ -29,9 +30,9 @@ class AppServiceProvider extends ServiceProvider
         // $user = User::all();
         
         $projects = Project::all();
-        view()->share("projects", $projects );
-
-
+        view()->share([
+            "projects" => $projects,
+        ]); 
         $taches = Tache::all();
         view()->share("taches", $taches );
 
@@ -40,6 +41,16 @@ class AppServiceProvider extends ServiceProvider
 
         $taskks =Calendar::all();
         view()->share("taskks", $taskks );
+        
+        $myprojects = Project::where('user_id', Auth::id())->get();
+        
+        view()->share([
+            "myprojects" => $myprojects,
+            'projects'=> $projects,
+        ]);
+        // dd($myprojects);
 
     }
+
+    
 }

@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image',
     ];
 
     /**
@@ -48,5 +49,19 @@ class User extends Authenticatable
     public function canCreateTeam()
     {
         return $this->hasRole('admin'); // Replace 'admin' with your actual admin role name
+    }
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
+    public function taches()
+    {
+        return $this->hasMany(Tache::class);
+    }
+
+    public function invitations()
+    {
+        return $this->hasMany(Invitation::class, 'invited_user_id');
     }
 }

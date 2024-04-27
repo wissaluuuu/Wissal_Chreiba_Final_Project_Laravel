@@ -1,6 +1,6 @@
 @extends('layouts.index')
 @section('content')
-    <div class="bg-[#6c5ce7] first-page h-screen flex   align-items-center justify-content-center  ">
+    <div class="bg-gradient-to-br from-blue-500 to-blue-300  first-page h-screen flex   align-items-center justify-content-center  ">
 
         {{-- <div> <img src="{{ asset('img/img-removebg-preview (1).png') }}" width="550vw" alt="description of myimage">
         </div>

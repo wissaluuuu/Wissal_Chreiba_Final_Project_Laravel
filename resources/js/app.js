@@ -110,3 +110,18 @@ gsap.fromTo(
         delay: 0.5,
     }
 );
+
+// edit
+const editIcons = document.querySelectorAll('.edit-icon');
+
+// Pour chaque icône d'édition, ajouter un gestionnaire d'événement de clic
+editIcons.forEach(editIcon => {
+    editIcon.addEventListener('click', () => {
+        // Récupérer l'ID de la tâche à éditer depuis l'attribut data-task-id
+        const taskId = editIcon.getAttribute('data-task-id');
+        // Récupérer le formulaire d'édition correspondant
+        const editForm = document.querySelector(`.edit-form[data-task-id="${taskId}"]`);
+        // Afficher le formulaire d'édition
+        editForm.classList.remove('hidden');
+    });
+});
