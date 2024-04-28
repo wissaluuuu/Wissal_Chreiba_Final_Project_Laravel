@@ -104,44 +104,44 @@
                 </div> --}}
 
 
-                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                     <div class="modal-dialog">
-                         <div class="modal-content">
-                             <div class="modal-header">
-                                 <h1 class="modal-title fs-5" id="exampleModalLabel">creer votre task
-                                 </h1>
-                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                     aria-label="Close"></button>
-                             </div>
-                             <div class="modal-body ">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">creer votre task
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body ">
 
-                                 {{-- form --}}
+                                {{-- form --}}
 
-                                 <form action="{{ route('tache.store')  }}" class="flex flex-col gap-3 flex-wrap form  "
-                                     method="POST">
-                                     @csrf
-                                     <input class="rounded-lg" type="text" name="name"
-                                         placeholder="le titre de la liste">
-                                     <input class="rounded-lg" type="text" placeholder="description" name="description"
-                                         placeholder="le titre de la liste">
-                                     <input class="rounded-lg" type="datetime-local" placeholder="datestart"
-                                         name="dateStart">
-                                     <input class="rounded-lg" type="datetime-local" placeholder="dateEnd"
-                                         name="dateEnd">
-                                     <select name="priority" class="bg-black text-white id="">
-                                         <option class value="low"></option>
-                                         <option value="medium" selected></option>
-                                         <option value="high"></option>
-                                     </select>
-                                     <select name="status" class="text-black " id="">
-                                         <option class="text-black py-4" selected value="to do"></option>
-                                         <option class="text-black py-4" value="in progress" selected></option>
-                                         <option class="text-black py-4" value="done"></option>
-                                     </select>
-                                     <input type="color" name="" id="">
-                                     <button class="bg-blue-500 button-create w-[9vw] rounded-lg px-6  mt-2">Ajouter une
-                                         liste</button>
+                                <form action="{{ route('tache.store') }}" class="flex flex-col gap-3 flex-wrap form  "
+                                    method="POST">
+                                    @csrf
+                                    <input class="rounded-lg" type="text" name="name"
+                                        placeholder="le titre de la liste">
+                                    <input class="rounded-lg" type="text" placeholder="description" name="description"
+                                        placeholder="le titre de la liste">
+                                    <input class="rounded-lg" type="datetime-local" placeholder="datestart"
+                                        name="dateStart">
+                                    <input class="rounded-lg" type="datetime-local" placeholder="dateEnd"
+                                        name="dateEnd">
+                                    <select name="priority" class="bg-black text-white id="">
+                                        <option class value="low"></option>
+                                        <option value="medium" selected></option>
+                                        <option value="high"></option>
+                                    </select>
+                                    <select name="status" class="text-black " id="">
+                                        <option class="text-black py-4" selected value="to do"></option>
+                                        <option class="text-black py-4" value="in progress" selected></option>
+                                        <option class="text-black py-4" value="done"></option>
+                                    </select>
+                                    <input type="color" name="" id="">
+                                    <button class="bg-blue-500 button-create w-[9vw] rounded-lg px-6  mt-2">Ajouter une
+                                        liste</button>
 
                                  </form>
                              </div>
@@ -183,11 +183,11 @@
                      {{ $tache->description }}
                  </h6>
              @endforeach --}}
-             @foreach ($projects as $project)
+             {{-- @foreach ($projects as $project) --}}
                  <div class="py-7 px-4 h-screen w-[90vw] flex gap-5 justify-around">
                      <div class=" w-[33%] flex flex-col gap-3 ">
                          <h2 class="font-extrabold text-start px-2">To Do</h2>
-                         @foreach ($project->tache as $tache )
+                         @foreach ($taches as $tache)
                              @if ($tache->status == 'to do')
                                  <div class="w-[100%] h-fit bg-white rounded-2xl px-3 py-4 shadow-xl">
                                      <h5 class="font-bold">
@@ -203,7 +203,7 @@
                      </div>
                      <div class=" w-[33%] flex flex-col gap-3">
                          <h2 class="font-extrabold text-start px-2">in Progress</h2>
-                         @foreach ($project->tache as $tache)
+                         @foreach ($taches as $tache)
                              @if ($tache->status == 'in progress')
                                  <div class="w-[100%] h-fit bg-white rounded-2xl px-3 py-4 shadow-xl">
                                      <h5 class="font-bold">
@@ -218,7 +218,7 @@
                      </div>
                      <div class=" w-[33%] flex flex-col gap-3">
                          <h2 class="font-extrabold text-start px-2">Done</h2>
-                         @foreach ($project->tache as $tache)
+                         @foreach ($taches as $tache)
                              @if ($tache->status == 'done')
                                  <div class="w-[100%] h-fit bg-white rounded-2xl px-3 py-4 shadow-xl">
                                      <h5 class="font-bold">
@@ -233,6 +233,6 @@
                          @endforeach
                      </div>
                  </div>
-             @endforeach
+             {{-- @endforeach --}}
             </div>
      @endsection
