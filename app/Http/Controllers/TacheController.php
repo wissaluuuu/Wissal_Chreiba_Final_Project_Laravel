@@ -10,18 +10,7 @@ use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 class TacheController extends Controller
 {
     public function index(){
-        // $projects = Project::all();
-        // // $projectId=$project->id;
-        // $taches = Tache::all();
-        // $tacheIds=Tache::where('project_id', $projects->id())->get();
-        // dd($tacheIds);
-        // return view('espaceTravail');
-
-
-    
-
-
-    return view('espaceTravail');
+        return view('espaceTravail');
     }
     public function store(request $request)
     {
@@ -34,19 +23,19 @@ class TacheController extends Controller
             "dateStart" => "required",
             // "project_id" => "required",
         ]);
-        // $createdBy = Auth::id();
+        $createdBy = Auth::id();
         Tache::create([
-            // 'user_id' => $request->user()->id,
+            'user_id' => $request->user()->id,
             "name" => $request->name,
             "description" => $request->description,
             "status" => $request->status,
             "priority" => $request->priority ?? 'medium',
             "dateEnd" => $request->dateEnd,
             "dateStart" => $request->dateStart,
-            "project_id" => $request->projects()->id,
+            "project_id" => $createdBy,
         ]);
         // dd($request);
-        
+        // dd($request);
         
         return back();
     }
@@ -66,9 +55,13 @@ class TacheController extends Controller
 
         $tache->user_id = Auth::id();
         $tache->save();
-        dd($tache);
         return redirect()->back();
     }
     
-
+    public function show($projectId)
+    {
+        $project = Project::findOrFail($projectId);
+        $tasks = Tache::where('project_id', $projectId)->get();
+        return view('project.tasks', compact('project', 'tasks'));
+    }
 }

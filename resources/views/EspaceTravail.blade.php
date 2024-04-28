@@ -117,15 +117,18 @@
                              <div class="modal-body ">
 
                                  {{-- form --}}
-                                     
-                                 <form action="{{ route('tache.store')}}" class="flex flex-col gap-3 flex-wrap form  "
+
+                                 <form action="{{ route('tache.store')  }}" class="flex flex-col gap-3 flex-wrap form  "
                                      method="POST">
                                      @csrf
-                                     <input class="rounded-lg" type="text" name="name" placeholder="le titre de la liste">
+                                     <input class="rounded-lg" type="text" name="name"
+                                         placeholder="le titre de la liste">
                                      <input class="rounded-lg" type="text" placeholder="description" name="description"
                                          placeholder="le titre de la liste">
-                                     <input class="rounded-lg"  type="datetime-local" placeholder="datestart" name="dateStart">
-                                     <input class="rounded-lg" type="datetime-local" placeholder="dateEnd" name="dateEnd">
+                                     <input class="rounded-lg" type="datetime-local" placeholder="datestart"
+                                         name="dateStart">
+                                     <input class="rounded-lg" type="datetime-local" placeholder="dateEnd"
+                                         name="dateEnd">
                                      <select name="priority" class="bg-black text-white id="">
                                          <option class value="low"></option>
                                          <option value="medium" selected></option>
@@ -171,56 +174,65 @@
 
              {{-- </div>  --}}
 
+             {{-- @foreach ($project->tache as $tache)
+                 <h5 class="font-bold">
 
+                     {{ $tache->name }}
+                 </h5>
+                 <h6>
+                     {{ $tache->description }}
+                 </h6>
+             @endforeach --}}
+             @foreach ($projects as $project)
+                 <div class="py-7 px-4 h-screen w-[90vw] flex gap-5 justify-around">
+                     <div class=" w-[33%] flex flex-col gap-3 ">
+                         <h2 class="font-extrabold text-start px-2">To Do</h2>
+                         @foreach ($project->tache as $tache )
+                             @if ($tache->status == 'to do')
+                                 <div class="w-[100%] h-fit bg-white rounded-2xl px-3 py-4 shadow-xl">
+                                     <h5 class="font-bold">
 
-             <div class="py-7 px-4 h-screen w-[90vw] flex gap-5 justify-around">
-                 <div class=" w-[33%] flex flex-col gap-3 ">
-                     <h2 class="font-extrabold text-start px-2">To Do</h2>
-                     @foreach ($taches as $tache)
-                         @if ($tache->status == 'to do')
-                             <div class="w-[100%] h-fit bg-white rounded-2xl px-3 py-4 shadow-xl">
-                                 <h5 class="font-bold">
+                                         {{ $tache->name }}
+                                     </h5>
+                                     <h6>
+                                         {{ $tache->description }}
+                                     </h6>
+                                 </div>
+                             @endif
+                         @endforeach
+                     </div>
+                     <div class=" w-[33%] flex flex-col gap-3">
+                         <h2 class="font-extrabold text-start px-2">in Progress</h2>
+                         @foreach ($project->tache as $tache)
+                             @if ($tache->status == 'in progress')
+                                 <div class="w-[100%] h-fit bg-white rounded-2xl px-3 py-4 shadow-xl">
+                                     <h5 class="font-bold">
+                                         {{ $tache->name }}
+                                     </h5>
+                                     <h6>
+                                         {{ $tache->description }}
+                                     </h6>
+                                 </div>
+                             @endif
+                         @endforeach
+                     </div>
+                     <div class=" w-[33%] flex flex-col gap-3">
+                         <h2 class="font-extrabold text-start px-2">Done</h2>
+                         @foreach ($project->tache as $tache)
+                             @if ($tache->status == 'done')
+                                 <div class="w-[100%] h-fit bg-white rounded-2xl px-3 py-4 shadow-xl">
+                                     <h5 class="font-bold">
 
-                                     {{ $tache->name }}
-                                 </h5>
-                                 <h6>
-                                     {{ $tache->description }}
-                                 </h6>
-                             </div>
-                         @endif
-                     @endforeach
+                                         {{ $tache->name }}
+                                     </h5>
+                                     <h6>
+                                         {{ $tache->description }}
+                                     </h6>
+                                 </div>
+                             @endif
+                         @endforeach
+                     </div>
                  </div>
-                 <div class=" w-[33%] flex flex-col gap-3">
-                     <h2 class="font-extrabold text-start px-2">in Progress</h2>
-                     @foreach ($taches as $tache)
-                         @if ($tache->status == 'in progress')
-                             <div class="w-[100%] h-fit bg-white rounded-2xl px-3 py-4 shadow-xl">
-                                 <h5 class="font-bold">
-                                     {{ $tache->name }}
-                                 </h5>
-                                 <h6>
-                                     {{ $tache->description }}
-                                 </h6>
-                             </div>
-                         @endif
-                     @endforeach
-                 </div>
-                 <div class=" w-[33%] flex flex-col gap-3">
-                     <h2 class="font-extrabold text-start px-2">Done</h2>
-                     @foreach ($taches as $tache)
-                         @if ($tache->status == 'done')
-                             <div class="w-[100%] h-fit bg-white rounded-2xl px-3 py-4 shadow-xl">
-                                 <h5 class="font-bold">
-
-                                     {{ $tache->name }}
-                                 </h5>
-                                 <h6>
-                                     {{ $tache->description }}
-                                 </h6>
-                             </div>
-                         @endif
-                     @endforeach
-                 </div>
-             </div>
-         </div>
+             @endforeach
+            </div>
      @endsection

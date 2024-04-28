@@ -28,33 +28,28 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // $user = User::all();
-        
+
         $projects = Project::all();
         view()->share([
             "projects" => $projects,
-        ]); 
+        ]);
         $taches = Tache::all();
-        view()->share("taches", $taches );
+        view()->share("taches", $taches);
 
         $users = User::all();
-        view()->share("users", $users );
+        view()->share("users", $users);
         $tachesParProjet = [];
 
-        $taskks =Calendar::all();
-        view()->share("taskks", $taskks );
+        $taskks = Calendar::all();
+        view()->share("taskks", $taskks);
 
 
-        foreach ($projects as $project) {
-      
-            $tacheid = Tache::where('project_id', $project->id)->get();
-            // $tachesParProjet[$project->id] = $taches;
-            // dd($tacheid);
-        }
-
-
-
+        // $tache =$projects->tache;
         
-    }
 
-    
+
+
+
+
+    }
 }

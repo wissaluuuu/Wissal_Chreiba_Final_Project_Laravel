@@ -1,11 +1,5 @@
 <x-app-layout>
     <div class="bg-[#f2f7ff] w-full h-screen flex gap-6 main p-1">
-        {{-- <div>
-            
-            <img src="{{ auth()->user()->image }}" alt="Profile Picture">
-        </div> --}}
-        {{-- side bar --}}
-
         <div
             class="h-screen  bg-white w-[5%] side-bar flex flex-col gap-16 align-items-center  rounded-2xl text-gray-500">
             <a href="{{ route('dashboard') }}" class="mt-2 text-[#4f6771]"> <svg xmlns="http://www.w3.org/2000/svg"
@@ -73,8 +67,6 @@
                         </div>
                         <div> <img src="{{ asset('img/bgg.png') }}" width="320vw" alt="description of myimage">
                         </div>
-
-
                         {{-- modal  pour creer ton project --}}
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
@@ -103,8 +95,7 @@
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button> --}}
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -260,8 +251,10 @@
                 </div>
                 <div class="ml-6 mt-7">
                     <h2 class="font-bold font-mono  ">Recent projects :</h2>
+
+
+                    <div class="flex bg-white  flex-wrap gap-7  h-fit">
                     @foreach ($projects as $project)
-                        <div class="flex bg-white  flex-wrap gap-7  h-fit">
                             <div class="h-[8vh] w-[22vw]    px-3 shadow-sm rounded-2xl">
                                 <div class="mt-2">
 

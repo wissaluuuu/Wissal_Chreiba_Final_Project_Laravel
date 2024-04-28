@@ -32,24 +32,11 @@ class ProjectController extends Controller
             "user_id" => $createdBy,
 
         ]);
-        $project = new Project();
-        // $project = Project::where('user_id', Auth::id())->get();
-
-        // dd($project);
-
-        $project->name = $request->name;
-        $project->description = $request->description;
-        $project->due_date = $request->due_date;
-        $project->user_id = Auth::id();
-
-        $project->save();
         
-
         return redirect()->back()->with('success', 'Project created successfully.');
     }
     public function show(Project $project)
     {
-       
         return view('EspaceTravail');
     }
 
