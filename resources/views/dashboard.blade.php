@@ -121,8 +121,8 @@
                     <script>
                         document.addEventListener('DOMContentLoaded', async function() {
                             const response = await axios.get('/calendar/show');
-                        const event = response.data.events;
-                        
+                            const event = response.data.events;
+
                             var calendarEl = document.getElementById('calendar');
                             var calendar = new FullCalendar.Calendar(calendarEl, {
                                 headerToolbar: {
@@ -149,7 +149,7 @@
                                     dayGridMonth: {
                                         buttonText: "Month",
                                     },
-                
+
                                 },
                                 initialView: "timeGridWeek",
                                 slotMinTime: "09:00:00", // min  time  appear in the calendar
@@ -159,29 +159,40 @@
                                 selectMirror: true,
                                 selectOverlap: true,
                                 weekends: true,
-                                initialView: 'dayGridWeek',
-                
-                
-                                events: event ,
+                                initialView: 'dayGridMonth',
+
+
+                                events: event,
                                 editable: true,
-                                
-                
+
+
                                 selectAllow: (info) => {
                                     let instant = new Date()
                                     return info.start > instant
                                 },
                                 select: (info) => {
-                
+
                                     let start = info.start
                                     let end = info.end
-                
-                
+                                    let eventNameInput = document.getElementById("name");
+                                    let dateStartInput = document.getElementById("date-start");
+                                    let timeStartInput = document.getElementById("time-start");
+                                    let dateEndInput = document.getElementById("date-end");
+                                    let timeEndInput = document.getElementById("time-end");
+
+                                    dateStartInput.value = formatDate(start).day;
+                                    dateEndInput.value = formatDate(end).day;
+                                    timeStartInput.value = formatDate(start).time;
+                                    timeEndInput.value = formatDate(end).time;
+
+                                    // $('#eventModal').modal('show');
+
                                     if (end.getDate() - start.getDate() > 0 && !info.allDay) {
                                         alert("'-'")
                                         calendar.unselect()
                                         return
                                     }
-                
+
                                     document.getElementById("date-start").value = formatDate(start).day
                                     if (info.allDay) {
                                         document.getElementById("date-end").value = formatDate(start).day
@@ -193,26 +204,26 @@
                                         document.getElementById("time-end").value = formatDate(end).time
                                     }
                                     document.getElementById("clickMe").click()
-                
-                
+
+
                                 },
                                 eventClick: (info) => {
                                     // alert("event clicked")
-                
+
                                     console.log(info);
                                 }
                             });
                             calendar.render();
-                
+
                             function formatDate(date) {
                                 let year = String(date.getFullYear())
                                 let month = String(date.getMonth() + 1).padStart(2, 0)
                                 let day = String(date.getDate()).padStart(2, 0)
-                
+
                                 let hour = String(date.getHours()).padStart(2, 0)
                                 let min = String(date.getMinutes()).padStart(2, 0)
                                 let sec = String(date.getSeconds()).padStart(2, 0)
-                
+
                                 return {
                                     day: `${year}-${month}-${day}`,
                                     time: `${hour}:${min}:${sec}`
@@ -249,7 +260,7 @@
                 </div>
                 <div class="ml-6 mt-7">
                     <h2 class="font-bold font-mono  ">Recent projects :</h2>
-                    {{-- @foreach ($projects as $project)
+                    @foreach ($projects as $project)
                         <div class="flex bg-white  flex-wrap gap-7  h-fit">
                             <div class="h-[8vh] w-[22vw]    px-3 shadow-sm rounded-2xl">
                                 <div class="mt-2">
@@ -261,7 +272,7 @@
                                     </a>
                                 </div>
                             </div>
-                    @endforeach --}}
+                    @endforeach
 
                     {{-- @foreach ($ownprojects as $ownproject) --}}
                     {{-- <div class="flex bg-white flex-wrap gap-7 h-fit">
@@ -279,7 +290,11 @@
 
 
 
-                    {{ $myprojects }}
+                    {{-- <p>{{ $project->name }}</p> --}}
+                    <!-- Ajoutez ici d'autres détails du projet que vous souhaitez afficher -->
+                    {{-- @foreach ($ownprojects as $ownproject)
+                    <h1>{{ $myownproject->name }}</h1>
+                    @endforeach --}}
                 </div>
             </div>
         </div>
@@ -290,13 +305,13 @@
     .fc-header-toolbar {
         color: #fff;
         /* background-color: red; */
-        /* display: none !important; */
+        display: none !important;
 
     }
-    
+
     .fc-day {
         padding: 50px;
-        
+
         color: #fff;
     }
 
@@ -315,16 +330,16 @@
         color: black;
 
     }
-    
+
     .fc .fc-col-header-cell-cushion {
         padding-top: 5px;
         padding-bottom: 5px;
         border-bottom: 2px black solid;
         color: black;
         width: 50px;
-        
+
     }
-    
+
     .fc-daygrid-day-frame {
         padding: 5vh !important;
         /* border: black solid 1px; */

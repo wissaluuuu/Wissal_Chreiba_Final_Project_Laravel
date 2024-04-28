@@ -10,10 +10,10 @@ class Tache extends Model
     use HasFactory;
 
     protected $fillable = [
-        // 'user_id',
+        'user_id',
         'name',
         'description',
-        // "status",
+        "status",
         'priority' ,
         "dateStart",
         "dateEnd",

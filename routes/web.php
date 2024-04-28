@@ -34,7 +34,17 @@ Route::get('/espaceTravail' , [ProjectController::class ,'show'])->name('espace.
 Route::post("/calendar/store" , [CalendarController::class , "store"]);
 Route::get("/calendar/show" , [CalendarController::class , "show"]);
 require __DIR__.'/auth.php';
-Route::get("/Projects",[ProjectController::class , "index"])->name('projects.index');
-Route::get('/taches', [TacheController::class, 'index'])->name('taches.index');
 
-Route::put('/taches/{id}', [TacheController::class, 'update'])->name('tache.update');
+Route::get("/Projects",[ProjectController::class , "index"])->name('projects.index');
+Route::get('/espaceTravail', [TacheController::class, 'index'])->name('espace.index');
+
+Route::put('/taches', [TacheController::class, 'update'])->name('tache.update');
+
+// $tasks = Task::all()->map(fn ($task) => [
+//     ...$task->toArray(),
+//     "backgroundColor" => $backgroundColors[$task->status],
+// ]);
+
+// return response()->json([
+//     "events" => $tasks
+// ]);

@@ -38,18 +38,22 @@ class AppServiceProvider extends ServiceProvider
 
         $users = User::all();
         view()->share("users", $users );
+        $tachesParProjet = [];
 
         $taskks =Calendar::all();
         view()->share("taskks", $taskks );
-        
-        $myprojects = Project::where('user_id', Auth::id())->get();
-        
-        view()->share([
-            "myprojects" => $myprojects,
-            'projects'=> $projects,
-        ]);
-        // dd($myprojects);
 
+
+        foreach ($projects as $project) {
+      
+            $tacheid = Tache::where('project_id', $project->id)->get();
+            // $tachesParProjet[$project->id] = $taches;
+            // dd($tacheid);
+        }
+
+
+
+        
     }
 
     

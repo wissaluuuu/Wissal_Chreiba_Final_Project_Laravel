@@ -12,9 +12,9 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        // $ownprojects = Project::where('user_id', Auth::id())->get();
-        // dd($ownprojects);
-        return view('projects', );
+        $projects=Project::all();
+        $ownprojects = Project::where('user_id', Auth::id())->get();
+        return view('projects', compact('ownprojects' , 'projects'));
     }
     public function store(Request $request)
     {
@@ -49,7 +49,7 @@ class ProjectController extends Controller
     }
     public function show(Project $project)
     {
-        
+       
         return view('EspaceTravail');
     }
 
@@ -65,4 +65,5 @@ class ProjectController extends Controller
 
         return redirect()->route('dashboard', $projectId)->with('success', 'You have successfully joined the project.');
     }
+    
 }
